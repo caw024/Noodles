@@ -1,4 +1,6 @@
-public class TicTacToe extends Matrix{
+import java.util.Scanner;
+
+public class TicTacToe implements Matrix{
 
     private final static int default_size = 3;
 
@@ -9,11 +11,11 @@ public class TicTacToe extends Matrix{
     }
     
     public TicTacToe(int row, int column){
-	if (row > 3 && column > 3)
+	if (row >= 3 && column >= 3)
 	    _array = new String[row][column];
 	else{
 	    System.out.println("Invalid _array: all sizes must be of length 3 or greater. Setting to default 3 by 3 tic tac toe.");
-	    this.
+	    //this.
 		}
     }
 
@@ -21,7 +23,7 @@ public class TicTacToe extends Matrix{
     public void setup(){
 	for (i = 0; i < _array.size() ; i++){
 	    for (j = 0; j < _array[].size(); j++)
-		_array[i,j] = "";
+		_array[i,j] = " ";
 	}
     }
 
@@ -45,6 +47,8 @@ public class TicTacToe extends Matrix{
     }
     
     public static void main(String[] args){
+	System.out.print("What kind of tic tac toe do you want to play?");
 	
+	TicTacToe yay = new Matrix();
     }
 }
