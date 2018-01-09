@@ -1,6 +1,6 @@
 # Team Noodles - Calvin Aw and Samuel Ramos
 
-Final Project Proposal:
+**Final Project Proposal:**
 
 Multipurpose Desktop
 
