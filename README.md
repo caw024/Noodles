@@ -9,7 +9,7 @@ Our project will be to create a small desktop like program. It will contain seve
 
 _Instructions_:
 1. Compile:
-`$javac MiniDesktop.java`
+`$ javac MiniDesktop.java`
 
 2. Run:
-`$java MiniDesktop`
+`$ java MiniDesktop`
