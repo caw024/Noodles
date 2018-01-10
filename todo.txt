@@ -1,4 +1,11 @@
 Team Noodles
 
 ToDo:
-1. 
+1. Tic Tac Toe - (3 by 3) finish by 1/11, (9 by 9) Finish by  1/13
+2. Letter Crush
+3. When steps 1,2 are completed, regroup and collaborate on MiniDesktop
+4. Text Editor
+5. Calculator
+
+Deadline: 1/16
+
