@@ -79,11 +79,26 @@ public class TicTacToe{
 
     while( true ) {
 	int moves = 9;
+	boolean turn = false;
 	System.out.print("Do you want to: \n1. Go first\n2. Go second");
 	choice = Keyboard.readInt();
-	if( moves == 0 ) {
-	    System.out.println("W00T! It took " + _guessCtr + " guesses");
+	if (choice == 1)
+	    turn = true;
+	
+	if (_yay.check3O() == true){
+	    System.out.println("Player 1 wins!");
+	}
+	else if (_yay.check3X() == true){
+	    System.out.println("Player 2 wins!");
+	}
+	else if( moves == 0 ) {
+	    System.out.println("It's a draw!");
 	    break;
+	}
+
+	if (turn == true){
+	    System.out.println(yay);
+	    System.out.println("Which row (between 1 and 3) do you want to put your letter");
 	}
 	else if( guess > _target ) {
 	    _hi = guess - 1;
