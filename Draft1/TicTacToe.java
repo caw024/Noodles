@@ -5,7 +5,7 @@ public class TicTacToe{
 
     private final static int default_size = 3;
 
-    private String[][] _array;
+    private Object[][] _array;
 
     public TicTacToe{
 	_array = new String[default_size][default_size];
@@ -114,6 +114,7 @@ public class TicTacToe{
     public static void main(String[] args){
 	System.out.println("What kind of tic tac toe do you want to play?");
 	
-	TicTacToe yay = new Matrix();
+	TicTacToe yay = new ();
+	System.out.print(yay);
     }
 }
