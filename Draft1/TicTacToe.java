@@ -54,25 +54,158 @@ public class TicTacToe{
 	}
 	return foo;
     }
+
     
     public String rules(){
 	return "These are the rules for tic tac toe";
     }
 
-    /*
-      public boolean check2O(){
-      int ctr = 0;
-      for (i = 0; i < _matrix.size() ; i++){
-      for (j = 0; j < _matrix.size(); j++){
-      if (_matrix[i][j] == "O"){
-      ctr += 1;
-      }
-      }
-	    
-      }
-      return false;
-      }
-    */
+    
+    public boolean check2Orow(){
+	 int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length ; i++){
+	    for (int j = 0; j < _matrix.length; j++){
+		if (_matrix[i][j] == "O"){
+		    ctr += 1;
+		}
+	    }
+
+	    if (ctr == 2){
+		return true;
+	    }
+	}
+
+	return false;
+    }
+
+    
+   public boolean check2Ocolumn(){
+	 int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length ; i++){
+	    for (int j = 0; j < _matrix.length; j++){
+		if (_matrix[j][i] == "O"){
+		    ctr += 1;
+		}
+	    }
+
+	    if (ctr == 2){
+		return true;
+	    }
+	}
+
+	return false;
+    }
+
+    
+    public boolean check2Omain(){
+	int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length; i++){
+	    if (_matrix[i][i] = "O")
+		ctr += 1;
+	}
+	if (ctr == 2){
+	    return true;
+	}
+
+	return false;
+    }
+
+    
+     public boolean check2Oback(){
+	int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length; i++){
+	    if (_matrix[i][2-i] = "O")
+		ctr += 1;
+	}
+	if (ctr == 2){
+	    return true;
+	}
+
+	return false;
+    }
+
+    
+    public boolean check2O(){
+	return check2Orow() || check2Ocolumn() || check2Omain() || check2Oback();
+    }
+
+    
+     public boolean check2Xrow(){
+	 int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length ; i++){
+	    for (int j = 0; j < _matrix.length; j++){
+		if (_matrix[i][j] == "X"){
+		    ctr += 1;
+		}
+	    }
+
+	    if (ctr == 2){
+		return true;
+	    }
+	}
+
+	return false;
+    }
+
+    
+   public boolean check2Xcolumn(){
+	 int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length ; i++){
+	    for (int j = 0; j < _matrix.length; j++){
+		if (_matrix[j][i] == "X"){
+		    ctr += 1;
+		}
+	    }
+
+	    if (ctr == 2){
+		return true;
+	    }
+	}
+
+	return false;
+    }
+
+    
+    public boolean check2Xmain(){
+	int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length; i++){
+	    if (_matrix[i][i] = "X")
+		ctr += 1;
+	}
+	if (ctr == 2){
+	    return true;
+	}
+
+	return false;
+    }
+
+    
+     public boolean check2Xback(){
+	int ctr = 0;
+	
+	for (int i = 0; i < _matrix.length; i++){
+	    if (_matrix[i][2-i] = "X")
+		ctr += 1;
+	}
+	if (ctr == 2){
+	    return true;
+	}
+
+	return false;
+    }
+
+    
+    public boolean check2X(){
+	return check2Xrow() || check2Xcolumn() || check2Xmain() || check2Xback();
+    }
+
 
     
     public boolean check3O(){
@@ -100,7 +233,6 @@ public class TicTacToe{
 	return false;
     }
 	
-
 
 
     public boolean check3X(){
@@ -154,11 +286,31 @@ public class TicTacToe{
     
     public void play3(){
 	int moves = 9;
+	int rowO, columnO, rowX, columnX, choice;
 	boolean turn = false;
-	System.out.print("Do you want to: \n1. Go first\n2. Go second\n");
 
-	int rowO, columnO, rowX, columnX;
-	int choice = Keyboard.readInt();
+	while (true){
+	    System.out.println("Do you want to: \n1. Go first\n2. Go second\n");
+
+	    
+	    try{
+		choice = Keyboard.readInt();
+		
+		if (choice < 3){
+		    break;
+		}
+		
+		else if (choice > 2){
+		    throw new IllegalArgumentException("Integer not within range, try again!");
+		}
+
+	    }
+	
+	    catch ( Exception e ){
+	    }
+	}	
+
+
 	if (choice == 1)
 	    turn = true;
 	else if (choice == 2)
@@ -195,7 +347,6 @@ public class TicTacToe{
 
 		if (get(rowO,columnO) == "_"){
 		    placeO(rowO, columnO);
-		    System.out.println("success");
 		    System.out.println(toString());
 		    turn = false;
 		    break;
@@ -209,7 +360,7 @@ public class TicTacToe{
 
 	    
 	    //AI move
-	    while( turn == false ) {
+	    if( turn == false ) {
 		// Determines result of game
 		if (check3O() == true){
 		    System.out.println("AI wins!");
@@ -221,23 +372,30 @@ public class TicTacToe{
 		    return;
 		}
 
-		// Determines a) who goes and b) where the O/X is put
-		System.out.println("Which row (between 1 and 3) do you want to put your letter");
-		rowX = Keyboard.readInt();
+		// Block opponent's victory
+		if (check2O() == true){
+		    
+		}
 
-		System.out.println("Which column (between 1 and 3) do you want to put your letter");
-		columnX = Keyboard.readInt();
+		//Aim for victory
+		else if (check2X() == true){
+		}
 
-		if (get(rowX, columnX) == "_"){
-		    placeX(rowX, columnX);
-		    System.out.println("success");
-		    System.out.println(toString());
-		    turn = true;
-		    break;
+		//Place in middle
+		else if ( ){
+		}
+
+		else{
 		}
 		
-		else
-		    System.out.println("Space is already occupied, try again");
+		if (get(rowX, columnX) == "_"){
+		    placeX(rowX, columnX);
+		  
+		}
+		
+		
+		System.out.println(toString());
+		turn = true;
 
 		moves--;
 	    }
@@ -248,20 +406,48 @@ public class TicTacToe{
 
     
     public static void main(String[] args){
-	System.out.println("Do you want to play\n\n1: Regular 3 by 3 tic tac toe\n2: Ultimate 9 by 9 tic tac toe\n");
-	int hi = Keyboard.readInt();
-	if (hi == 1){
-	    TicTacToe yay = new TicTacToe();
-	    yay.setup();
-	    System.out.print(yay);
-	    yay.play3();
-	    System.out.println("What do you want to do next?");
+
+	int hi = 0;
+	while (true){
+	    while (true){
+		System.out.println("\nDo you want to play\n\n1: Regular 3 by 3 tic tac toe\n2: Ultimate 9 by 9 tic tac toe\n");
+	    
+		try{
+		    hi = Keyboard.readInt();
+		
+		    if (hi < 3){
+			break;
+		    }
+		
+		    else if (hi > 2){
+			throw new IllegalArgumentException("Integer not within range, try again!");
+		    }
+
+		}
+	
+		catch ( Exception e ){
+		}
+	    }
+
+	
+	    if (hi == 1){
+		TicTacToe yay = new TicTacToe();
+		yay.setup();
+		System.out.print(yay);
+		yay.play3();
+		System.out.println("What do you want to do next?");
+	        break;
+	    }
+	    else if (hi == 2){
+		System.out.print("In progress");
+		break;
+	    }
+	    else{
+		System.out.println("Requires an integer input");
+	    }
 	}
-	else{
-	    System.out.print("Sorry");
-	}
+        
     }
- 
 }
 
 
