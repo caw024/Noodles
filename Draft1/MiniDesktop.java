@@ -23,8 +23,14 @@ public class MiniDesktop{
 	    LetterCrush.main(c);
 	}
 	else if (b.equals("tictactoe")){
-
+	   String[] c = new String[1];
+	    System.out.println("Opening Tic Tac Toe");
+	    System.out.println("");
+	    TicTacToe.main(c);
+	    
 	}
+	
+      
     }
     public static void main(String[] args){
 	select();
