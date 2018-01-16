@@ -1125,7 +1125,7 @@ public class TicTacToe{
 	rules9();
 
 	while (true){
-	    System.out.println("\nDo you want to: \n1. Go first\n2. Go second");
+	    System.out.println("\nDo you want to: \n1. Go first\n2. Go second\nelse. Random choice");
 	    
 	    try{
 		choice = Keyboard.readInt();	  
