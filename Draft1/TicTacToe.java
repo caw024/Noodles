@@ -5,15 +5,18 @@ public class TicTacToe{
     private final static int default_size = 3;
 
     private Object[][] _matrix;
+    private Object[][] _final;
 
     
     //default constructor
     public TicTacToe(){
 	_matrix = new Object[default_size][default_size];
+	_final = new Object[0][0];
     }
 
     public TicTacToe(int size){
 	_matrix = new Object[size][size];
+	_final = new Object[3][3];
     }
     
     //sets up the board
@@ -40,6 +43,12 @@ public class TicTacToe{
 		_matrix[i][j] = "_";
 	    }
 	}
+	
+	for (int i = 0; i < 3; i++){
+	    for (int j = 0; j < 3; j++){
+		_final[i][j] = "_";
+	    }
+	}
     }
     
     //returns size of matrix
@@ -57,7 +66,7 @@ public class TicTacToe{
     //prints the matrix
     public String toString() 
     {
-	String foo = "    ";
+	String foo = "\nTic Tac Toe Board:\n    ";
 	for (int i = 0; i < size(); i++){
 	    foo += i + 1  + " ";
 	    if ((i + 1) % 3 == 0)
@@ -80,6 +89,22 @@ public class TicTacToe{
 	    if ((i + 1) % 3 == 0)
 		foo += "\n";
 	}
+
+	if (_final.length == 3){
+	    foo += "\nFinal matrix\n";
+	    for( int i = 0; i < 3; i++ ) {
+		foo += " | ";
+	
+		for( int j=0; j < 3; j++ ) {
+		    foo += _final[i][j] + " "; //get(i+1,j+1)
+		}
+
+		foo += "|\n";
+
+	    }
+	}
+
+	
 	return foo;
     }
 
@@ -436,6 +461,60 @@ public class TicTacToe{
 
 
 
+   
+    public boolean check3Of(){
+	//Checks row
+	for (int i = 0; i < 3 ; i++){
+	    if (_final[i][0] == _final[i][1] && _final[i][2] == _final[i][1] && _final[i][0] == "O")
+		return true;
+	}
+
+
+	//Checks column
+	for (int i = 0; i < 3 ; i++){
+	    if (_final[0][i] == _final[1][i] && _final[2][i] == _final[1][i] && _final[0][i] == "O")
+		return true;
+	}
+
+	//Checks main diagonal
+
+	if (_final[0][0] == _final[1][1] && _final[2][2] == _final[1][1] && _final[0][0] == "O")
+	    return true;
+
+	//Checks back diagonal
+	if (_final[0][2] == _final[1][1] && _final[2][0] == _final[1][1] && _final[1][1] == "O")
+	    return true;
+    
+	return false;
+    }
+	
+
+
+    public boolean check3Xf(){
+	//Checks row
+	for (int i = 0; i < 3 ; i++){
+	    if (_final[i][0] == _final[i][1] && _final[i][2] == _final[i][1] && _final[i][0] == "X")
+		return true;
+	}
+
+	//Checks column
+	for (int i = 0; i < 3 ; i++){
+	    if (_final[0][i] == _final[1][i] && _final[2][i] == _final[1][i] && _final[0][i] == "X")
+		return true;
+	}
+
+	//Checks main diagonal
+	if (_final[0][0] == _final[1][1] && _final[2][2] == _final[1][1] && _final[0][0] == "X")
+	    return true;
+
+	//Checks back diagonal
+	if (_final[0][2] == _final[1][1] && _final[2][0] == _final[1][1] && _final[1][1] == "X")
+	    return true;
+    
+	return false;
+	
+    }
+
 
     
 
@@ -449,7 +528,11 @@ public class TicTacToe{
     //gives the row of the first appearance of 2 O's in a row (outputs -1 otherwise)
     public int check2ORow(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
-	
+   	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+		
 	for (; rlow < rhigh ; rlow++){
 	   
 
@@ -479,7 +562,11 @@ public class TicTacToe{
     public int check2OColumn(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = 0;
-	
+   	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+		
 	for (; clow < chigh ; clow++){
 	   
 	    for (; rlow < rhigh; rlow++){
@@ -506,6 +593,11 @@ public class TicTacToe{
     public int check2OMain(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = 0;
+   	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+
 	
 	if (_matrix[rlow][clow] == "X" || _matrix[rlow+1][clow+1] == "X" || _matrix[rlow+2][clow+2] == "X")
 	    return -1;
@@ -535,6 +627,11 @@ public class TicTacToe{
     public int check2OBack(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = 0;
+   	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+	
 	
 	if (_matrix[rlow][chigh] == "X" || _matrix[rlow+1][chigh-1] == "X" || _matrix[rlow+2][chigh-2] == "X"){
 	    return -1;
@@ -573,6 +670,11 @@ public class TicTacToe{
     //gives the row of the first appearance of 2 X's in a row (outputs -1 otherwise)
     public int check2XRow(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
+	   	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+	
 	
 	for (; rlow < rhigh ; rlow++){
 	   
@@ -602,6 +704,11 @@ public class TicTacToe{
     
     public int check2XColumn(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
+	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+	
 	
 	for (; clow < chigh ; clow++){
 	   
@@ -629,6 +736,12 @@ public class TicTacToe{
     public int check2XMain(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = 0;
+
+	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
+	
 	
 	if (_matrix[rlow][clow] == "O" || _matrix[rlow+1][clow+1] == "O" || _matrix[rlow+2][clow+2] == "O")
 	    return -1;
@@ -658,6 +771,10 @@ public class TicTacToe{
     public int check2XBack(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = 0;
+       	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
 	
 	if (_matrix[rlow][chigh] == "O" || _matrix[rlow+1][chigh-1] == "O" || _matrix[rlow+2][chigh-2] == "O"){
 	    return -1;
@@ -695,7 +812,10 @@ public class TicTacToe{
 
     
     public boolean check3O(int rlow, int rhigh, int clow, int chigh){
-	
+	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
 
 	//Checks row
 	for (;rlow < rhigh; rlow ++){
@@ -729,7 +849,10 @@ public class TicTacToe{
 
       
     public boolean check3X(int rlow, int rhigh, int clow, int chigh){
-	
+	rlow -= 1;
+	rhigh -= 1;
+	clow -= 1;
+	chigh -= 1;
 
 	//Checks row
 	for (;rlow < rhigh; rlow ++){
@@ -775,6 +898,7 @@ public class TicTacToe{
 	int b = 0;
 	int sub;
 	boolean turn = false;
+
 
 	while (true){
 	    System.out.println("\nDo you want to: \n1. Go first\n2. Go second");
@@ -974,12 +1098,21 @@ public class TicTacToe{
 
 
 
+
+
+
+    
+
+
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     
     public void play9(){
 	int moves = 81;
-	int rowO, columnO, rowX, columnX, choice;
+	int rowO = 0;
+	int columnO = 0;
+	int rowX, columnX, choice;
 	int a = 0;
 	int b = 0;
 	int upperrow = 9;
@@ -1019,7 +1152,7 @@ public class TicTacToe{
 	    //Player move
 	    while( turn == true ) {
 		// Determines result of game
-		if (check3X(lowerrow, upperrow, lowercolumn, uppercolumn) == true){
+		if (check3Xf() == true){
 		    System.out.println("AI wins!");
 		    return;
 		}
@@ -1029,8 +1162,13 @@ public class TicTacToe{
 		    return;
 		}
 
+       
+		    
+
 		// Determines a) who goes and b) where the O/X is put
-		System.out.println("Which row (between " + lowerrow + " and " + upperrow+ ") do you want to put your letter?");
+		System.out.println("Row bound: " + lowerrow + "-" + upperrow);
+		System.out.println("Column bound: " + lowercolumn + "-" + uppercolumn);
+		System.out.println("Which row (between " + lowerrow + " and " + upperrow + ") do you want to put your letter?");
 		rowO = Keyboard.readInt();
 
 		System.out.println("Which column (between " + lowercolumn  + " and " + uppercolumn + ") do you want to put your letter?");
@@ -1099,7 +1237,7 @@ public class TicTacToe{
 	    //AI move
 	    if( turn == false ) {
 		// Determines result of game
-		if (check3O(lowerrow, upperrow, lowercolumn, uppercolumn) == true){
+		if (check3Of() == true){
 		    System.out.println("You win!");
 		    return;
 		}
@@ -1112,51 +1250,59 @@ public class TicTacToe{
 		System.out.println("AI moves\n");
 		    
 
+		
 		//Aim for victory
 		
-		if (check2X() == true){
-		    a = 0;
+		if (check2X(lowerrow, upperrow, lowercolumn, uppercolumn) == true){
+		    a = lowercolumn;
 		    
-		    if (check2XRow() != -1){
-			System.out.println("2XRow = " + check2XRow());
-			sub = check2XRow();
-			while (a < 3){
+		    if (check2XRow(lowerrow, upperrow, lowercolumn, uppercolumn) != -1){
+			System.out.println("2XRow = " + check2XRow(lowerrow, upperrow, lowercolumn, uppercolumn));
+			sub = check2XRow(lowerrow, upperrow, lowercolumn, uppercolumn);
+			while (a < uppercolumn){
 			    if (_matrix[sub][a] != "X"){
 				_matrix[sub][a] = "X";
+				break;
 			    }
 			   
 			    a+=1;
 			}
+			_final[sub][a] = "X";
+
+			
 		    }
-		    else if (check2XColumn() != -1){
-			System.out.println("2XCol = " + check2XColumn());
-			sub = check2XColumn();
-			while (a < 3){
+		    else if (check2XColumn(lowerrow, upperrow, lowercolumn, uppercolumn) != -1){
+			System.out.println("2XCol = " + check2XColumn(lowerrow, upperrow, lowercolumn, uppercolumn));
+			sub = check2XColumn(lowerrow, upperrow, lowercolumn, uppercolumn);
+			while (a < upperrow){
 			    if (_matrix[a][sub] != "X"){
 				_matrix[a][sub] = "X";
+				break;
 			    }
 			    a+=1;
 			}
+			_final[a][sub] = "X";
+
 		    }
-		    else if (check2XMain() != -1){
-			System.out.println("2XMain = " + check2XMain());			
-			_matrix[check2XMain()][check2XMain()] = "X";
+		    else if (check2XMain(lowerrow, upperrow, lowercolumn, uppercolumn) != -1){
+			System.out.println("2XMain = " + check2XMain(lowerrow, upperrow, lowercolumn, uppercolumn));			
+			_matrix[check2XMain(lowerrow, upperrow, lowercolumn, uppercolumn)][check2XMain(lowerrow, upperrow, lowercolumn, uppercolumn)] = "X";
 		    }
 		    else {
-			System.out.println("2XBack = " + check2XBack());			
-			_matrix[check2XBack()][2 - check2XBack()] = "X";
+			System.out.println("2XBack = " + check2XBack(lowerrow, upperrow, lowercolumn, uppercolumn));			
+			_matrix[check2XBack(lowerrow, upperrow, lowercolumn, uppercolumn)][2 - check2XBack(lowerrow, upperrow, lowercolumn, uppercolumn)] = "X";
 		    }
    
 		}
 
 
 		// Block opponent's victory
-		else if (check2O() == true){
+		else if (check2O(lowerrow, upperrow, lowercolumn, uppercolumn) == true){
 		    b = 0;
 		    
-		    if (check2ORow() != -1){
-			System.out.println("2ORow = " + check2ORow());
-			sub = check2ORow();
+		    if (check2ORow(lowerrow, upperrow, lowercolumn, uppercolumn) != -1){
+			System.out.println("2ORow = " + check2ORow(lowerrow, upperrow, lowercolumn, uppercolumn));
+			sub = check2ORow(lowerrow, upperrow, lowercolumn, uppercolumn);
 			while (b < 3){
 			    if (_matrix[sub][b] != "O"){
 				_matrix[sub][b] = "X";
@@ -1164,9 +1310,9 @@ public class TicTacToe{
 			    b+=1;
 			}
 		    }
-		    else if (check2OColumn() != -1){
-			System.out.println("2OCol = " + check2OColumn());
-			sub = check2OColumn();
+		    else if (check2OColumn(lowerrow, upperrow, lowercolumn, uppercolumn) != -1){
+			System.out.println("2OCol = " + check2OColumn(lowerrow, upperrow, lowercolumn, uppercolumn));
+			sub = check2OColumn(lowerrow, upperrow, lowercolumn, uppercolumn);
 			while (b < 3){
 			    if (_matrix[b][sub] != "O"){
 				_matrix[b][sub] = "X";
@@ -1174,48 +1320,78 @@ public class TicTacToe{
 			    b+=1;
 			}
 		    }
-		    else  if (check2OMain() != -1){
-			System.out.println("2OMain = " + check2OMain());
-			_matrix[check2OMain()][check2OMain()] = "X";
+		    else  if (check2OMain(lowerrow, upperrow, lowercolumn, uppercolumn) != -1){
+			System.out.println("2OMain = " + check2OMain(lowerrow, upperrow, lowercolumn, uppercolumn));
+			_matrix[check2OMain(lowerrow, upperrow, lowercolumn, uppercolumn)][check2OMain(lowerrow, upperrow, lowercolumn, uppercolumn)] = "X";
 		    }
 		    else {
-			System.out.println("2OBack = " + check2OBack());
-			_matrix[check2OBack()][2 - check2OBack()] = "X";
+			System.out.println("2OBack = " + check2OBack(lowerrow, upperrow, lowercolumn, uppercolumn));
+			_matrix[check2OBack(lowerrow, upperrow, lowercolumn, uppercolumn)][2 - check2OBack(lowerrow, upperrow, lowercolumn, uppercolumn)] = "X";
 		    }
 		    
 		}
 
-		//Place in middle
-		else if (_matrix[1][1] == "_"){
-		    System.out.println("Middle");
-		    _matrix[1][1] = "X";
-		}
-
-		//Place in unoccupied square
+	
 		else{
 		    System.out.println("Random");
 		    while (true ){
-			rowX = (int) (3 * Math.random());
-			columnX = (int) (3 * Math.random());
-			if (_matrix[rowX][columnX] == "_"){
-			    placeX(rowX+1,columnX+1);
+			a = (int) (2 * Math.random());
+		
+			b = (int) (2 * Math.random());
+		
+		
+			if (_matrix[lowerrow+a][lowercolumn+b] == "_"){
+			    placeX(lowerrow+a,lowercolumn+b);
+			    System.out.println(lowerrow + "\t" + upperrow + "\t" + lowercolumn + "\t" + uppercolumn);
+
+			    lowerrow += a;
+			    upperrow += a;
+			    lowercolumn += b;
+			    uppercolumn += b;
+
 			    break;
 			}
 			
 		    }					
 		}
+	
 				
+			System.out.println(lowerrow + "\t" + upperrow + "\t" + lowercolumn + "\t" + uppercolumn);
+		  
+		    	    
+		    if (lowerrow % 3 == 0){
+			lowerrow = 7;
+			upperrow = 9;
+		    }
+		    else if (lowerrow % 3 == 1){
+			lowerrow = 1;
+			upperrow = 3;
+		    }
+		    else{
+			lowerrow = 4;
+			upperrow = 6;
+		    }
+
+		    
+		    if (lowercolumn % 3 == 0){
+			lowercolumn = 7;
+			uppercolumn = 9;
+		    }
+		    else if (lowercolumn % 3 == 1){
+			lowercolumn = 1;
+			uppercolumn = 3;
+		    }
+		    else{
+			lowercolumn = 4;
+			uppercolumn = 6;
+		    }
 		
 		System.out.println(toString());
 		turn = true;
 		moves--; 
 
 	    }
-	    
-
-	    if (turn == false)
-		return;
-	    
+	   
 	}
     }
 
@@ -1280,7 +1456,6 @@ public class TicTacToe{
 	    
 		else if (hi == 2){
 		    TicTacToe yay = new TicTacToe(9);
-		    TicTacToe situation = new TicTacToe();
 		    while (true){
 			yay.setup9();
 			System.out.print(yay);
