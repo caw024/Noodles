@@ -110,13 +110,13 @@ public class TicTacToe{
 
 
     //prints the rules of the game
-    public String rules3(){
-	return "These are the rules for regular 3x3 tic tac toe";
+    public void rules3(){
+	System.out.println( "Rules:\n The player is assigned with the icon 'O' and the AI is assigned with the icon 'X'. The player chooses who goes first, second, or it is chosen randomly.  You win when you create a row, column, or diagonal with 3 consecutive O's. Similarly, the AI wins if they make 3 consecutive X's. Neither player can place their (O/X) on top of an existing icon (O/X).");
     }
 
     //prints the rules of the game
-    public String rules9(){
-	return "These are the rules for ultimate 9x9 tic tac toe";
+    public void rules9(){
+	System.out.println( "Rules\n The player is assigned with the icon 'O' and the AI is assigned with the icon 'X'. The player chooses who goes first, second, or it is chosen randomly." );
     }
 
     public void placeO(int row, int column){
@@ -898,6 +898,7 @@ public class TicTacToe{
 	int b = 0;
 	int sub;
 	boolean turn = false;
+	rules3();
 
 
 	while (true){
@@ -1121,6 +1122,7 @@ public class TicTacToe{
 	int lowercolumn = 1;
 	int sub;
 	boolean turn = false;
+	rules9();
 
 	while (true){
 	    System.out.println("\nDo you want to: \n1. Go first\n2. Go second");
@@ -1443,7 +1445,9 @@ public class TicTacToe{
 
 			    if (hi == 2){
 				System.out.println( "\nAlright!\n" );
-				return;
+				String[] c = new String[1];
+				MiniDesktop.main(c);
+
 			    }
 			
 			    else if (hi > 3 || hi < 0){
@@ -1469,7 +1473,9 @@ public class TicTacToe{
 
 			    if (hi == 2){
 				System.out.println( "\nAlright!\n" );
-				return;
+				String[] c = new String[1];
+				MiniDesktop.main(c);
+
 			    }
 			
 			    else if (hi > 3 || hi < 0){
