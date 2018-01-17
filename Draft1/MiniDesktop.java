@@ -6,16 +6,12 @@ public class MiniDesktop{
 	    System.out.println("Welcome to MiniDesktop 1.0");
 	    System.out.println("Which program would you like to open? Type the name (verbatim) below. If you would like to exit, type 'exit'.");
 	    System.out.println("texteditor");
-	    System.out.println("calculator");
 	    System.out.println("lettercrush");
 	    System.out.println("tictactoe");
 	    Scanner a = new Scanner(System.in);
 	    String b = a.next();
 	    if (b.equals("texteditor")){
 	    
-	    }
-	    else if (b.equals("calculator")){
-
 	    }
 	    else if (b.equals("lettercrush")){
 		String[] c = new String[1];

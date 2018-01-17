@@ -30,9 +30,9 @@ public class TicTacToe{
 
     //checks if a matrix is full
     public boolean full(int rlow, int rhigh, int clow, int chigh){
-	for (; rlow < rhigh ; rlow++){
-	    for (; clow < chigh; clow++){
-		if (_matrix[rlow][clow] == "_")
+	for (; rlow <= rhigh ; rlow++){
+	    for (; clow <= chigh; clow++){
+		if (get(rlow,clow) == "_")
 		    return false;
 	    }
 	}
@@ -580,7 +580,6 @@ public class TicTacToe{
     public int check2OMain(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = rlow+2;
-
 
 	    if (get(rlow,clow) == "X" || get(rlow+1,clow+1) == "X" || get(rlow+2,clow+2) == "X")
 		return -1;
@@ -1230,7 +1229,6 @@ public class TicTacToe{
 			    }
 			    a+=1;
 			}
-			System.out.println("FIIIX");
 			if (getF((sub-1)/3,(a-1)/3) == "_"){
 			    _final[(sub-1)/3][(a-1)/3] = "X";
 			}
@@ -1251,7 +1249,6 @@ public class TicTacToe{
 			    }
 			    a+=1;
 			}
-			System.out.println("FIIIX");
 
 			if (getF((a-1)/3,(sub-1)/3) == "_"){
 			    _final[(a-1)/3][(sub-1)/3] = "X";
@@ -1264,14 +1261,14 @@ public class TicTacToe{
 		    else if (check2XMain(rlow, rhigh, clow, chigh) != -1){
 			System.out.println("2XMain = " + check2XMain(rlow, rhigh, clow, chigh));			
 			placeX(check2XMain(rlow, rhigh, clow, chigh),check2XMain(rlow, rhigh, clow, chigh));
-			rlow = (check2XMain(rlow, rhigh, clow, chigh));
-			clow = (check2XMain(rlow, rhigh, clow, chigh));
+			rlow = check2XMain(rlow, rhigh, clow, chigh);
+			clow += ((check2XMain(rlow, rhigh, clow, chigh)+2) % 3);
 		    }
 		    else {
 			System.out.println("2XBack = " + check2XBack(rlow, rhigh, clow, chigh));			
-			placeX(check2XBack(rlow, rhigh, clow, chigh), chigh + clow - check2XBack(rlow, rhigh, clow, chigh));
+			placeX(check2XBack(rlow, rhigh, clow, chigh), chigh - ((check2XBack(rlow, rhigh, clow, chigh) + 2) % 3 ));
 			rlow = check2XBack(rlow, rhigh, clow, chigh);
-			clow = chigh + clow - check2XBack(rlow, rhigh, clow, chigh);
+			clow = chigh - ((check2XBack(rlow, rhigh, clow, chigh) + 2) % 3);
 		    }
    
 		}
@@ -1312,16 +1309,16 @@ public class TicTacToe{
 		    }
 		    else if (check2OMain(rlow, rhigh, clow, chigh) != -1){
 			System.out.println("2OMain = " + check2OMain(rlow, rhigh, clow, chigh));
-			placeX(check2OMain(rlow, rhigh, clow, chigh), check2OMain(rlow, rhigh, clow, chigh));
-			rlow = (check2XMain(rlow, rhigh, clow, chigh));
-			clow = (check2XMain(rlow, rhigh, clow, chigh));
+			placeX(check2OMain(rlow, rhigh, clow, chigh), ((check2OMain(rlow, rhigh, clow, chigh)+2) % 3) + clow);
+			rlow = check2OMain(rlow, rhigh, clow, chigh);
+			clow += ((check2OMain(rlow, rhigh, clow, chigh)+2) % 3);
 			
 		    }
 		    else {
 			System.out.println("2OBack = " + check2OBack(rlow, rhigh, clow, chigh));
-			placeX(check2OBack(rlow, rhigh, clow, chigh), chigh + clow - check2OBack(rlow, rhigh, clow, chigh));
-			rlow = (check2XMain(rlow, rhigh, clow, chigh));
-			clow = chigh + clow - (check2XMain(rlow, rhigh, clow, chigh));
+			placeX(check2OBack(rlow, rhigh, clow, chigh), chigh - ((check2OBack(rlow, rhigh, clow, chigh) + 2) % 3 ));
+			rlow = check2OBack(rlow, rhigh, clow, chigh);
+			clow = chigh - ((check2OBack(rlow, rhigh, clow, chigh) + 2) % 3);
 		    }
 		    
 		}
