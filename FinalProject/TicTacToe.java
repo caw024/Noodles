@@ -142,14 +142,9 @@ public class TicTacToe{
 
 
 
-
-
-
-    
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~Checking 2 in a row of 3 by 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     
-
     //gives the row of the first appearance of 2 O's in a row (outputs -1 otherwise)
     public int check2ORow(){
 	int ctr = 0;
@@ -272,9 +267,6 @@ public class TicTacToe{
     }
 
     
-
-
-
 
 
 
