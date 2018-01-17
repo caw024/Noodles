@@ -1,7 +1,7 @@
-Noodles
+Team Noodles
 Calvin Aw
 Samuel Ramos
-pd 08
+APCS1 pd 08
 ---------------------
 Multipurpose Desktop
 
@@ -31,31 +31,34 @@ Flesh out each category whenever necessary, appropriate.
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<Wow, we so BOSS bc...>
+We so boss bc we, as a duo, managed to create 3 programs, which function separately, but one of which links the two together.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
->
+Ultimate TicTacToe AI is still a bit buggy bc it doesn't always check everything the way it needs to be
+Some things still need to be robustified
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<wow! oo! etc!...>
+Be tenacious, but also be flexible. If code doesn't work, try to find the error, but if it isn't obvious, employ KtS!
+
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We changed ___ to ___ bc...
-<etc>
-<etc>
+We discarded calculator and text editor from our list of projects as everything else was too ambitious for a duo
+
+We removed the back() function of MiniDesktop bc we could make things go back in the other programs instead.
+
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 <tales of wisdom gained...>
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+It's never too late to start a project
+You never know how long it takes you to debug something until ya debug it
+Conquering and dividing works to an extent, but it makes it harder for the partner to catch up to your thinking
+Sleep is important for functioning code
+
 
 
  ______   ______   __   __   __       ______   _______     
@@ -69,33 +72,63 @@ LESSONS LEARNED
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-2018 - 01 - dd
+2018 - 01 - 04
 --------------------------------------------------------------
-Samuel :: <Thing member did.>
-Calvin :: <Thing member did.>
+Samuel :: 
+Calvin :: Took devlog from library
 
-2018 - 01 - dd
+2018 - 01 - 05
 --------------------------------------------------------------
-Samuel :: <Thing member did.>
-Calvin :: <Thing member did.>
+Samuel :: Made UML Diagram
+Calvin :: 
 
-2018 - 01 - dd
+2018 - 01 - 07
 --------------------------------------------------------------
-Samuel :: <Thing member did.>
-Calvin :: <Thing member did.>
+Samuel :: Started LetterCrush
+Calvin :: Edited ReadMe file
 
-2018 - 01 - dd
+2018 - 01 - 09
 --------------------------------------------------------------
-Samuel :: <Thing member did.>
-Calvin :: <Thing member did.>
+Samuel :: 
+Calvin :: Made flowchart
 
-2018 - 01 - dd
+2018 - 01 - 10
 --------------------------------------------------------------
-Samuel :: <Thing member did.>
-Calvin :: <Thing member did.>
+Samuel :: Continued LetterCrush
+Calvin :: Started 3 by 3 Tic Tac Toe
 
-2018 - 01 - dd
+2018 - 01 - 11
 --------------------------------------------------------------
-Samuel :: <Thing member did.>
-Calvin :: <Thing member did.>
+Samuel :: Finished LetterCrush + Begin MiniDesktop
+Calvin :: Made 2 Player Tic Tac Toe
+
+2018 - 01 - 12
+--------------------------------------------------------------
+Samuel :: Continue working on MiniDesktop
+Calvin :: Begun Tic Tac Toe AI
+
+2018 - 01 - 13
+--------------------------------------------------------------
+Samuel :: Finished MiniDesktop
+Calvin :: Finished functional Tic Tac Toe AI
+
+2018 - 01 - 14
+--------------------------------------------------------------
+Samuel :: Edited UML Diagram; Helped in 3 by 3 Tic Tac Toe AI
+Calvin :: Began 9 by 9 Tic Tac Toe User Turn
+
+2018 - 01 - 15
+--------------------------------------------------------------
+Samuel :: Robustified 3 by 3 Tic Tac Toe
+Calvin :: Begin Ultimate Tic Tac Toe AI; Robustified MiniDesktop
+
+2018 - 01 - 16
+--------------------------------------------------------------
+Samuel :: Begun Text Editor
+Calvin :: Worked on Ultimate Tic Tac Toe AI
+
+2018 - 01 - 17
+--------------------------------------------------------------
+Samuel :: Finished Text Editor
+Calvin :: Finished a mostly working Ultimate Tic Tac Toe AI
 ==============================================================
