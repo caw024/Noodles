@@ -117,12 +117,12 @@ public class TicTacToe{
 
     //prints the rules of the game
     public void rules3(){
-	System.out.println( "Rules:\n The player is assigned with the icon 'O' and the AI is assigned with the icon 'X'. The player chooses who goes first, second, or it is chosen randomly.  You win when you create a row, column, or diagonal with 3 consecutive O's. Similarly, the AI wins if they make 3 consecutive X's. Neither player can place their (O/X) on top of an existing icon (O/X).");
+	System.out.println( "Rules:\n The player is assigned with the icon 'O' and the AI is assigned with the icon 'X'. The player chooses who goes first or second. You win when you create a row, column, or diagonal with 3 consecutive O's. Similarly, the AI wins if they make 3 consecutive X's. Neither player can place their (O/X) on top of an existing icon (O/X).");
     }
 
     //prints the rules of the game
     public void rules9(){
-	System.out.println( "Rules\n The player is assigned with the icon 'O' and the AI is assigned with the icon 'X'. The player chooses who goes first, second, or it is chosen randomly." );
+	System.out.println( "Rules\n The player is assigned with the icon 'O' and the AI is assigned with the icon 'X'. The player chooses who goes first or second. If you partition the 9 by 9 matrix into nine 3 by 3 matrices and Player 1 makes a move, the possible moves of the next player is the 3 by 3 matrix on the 9 by 9 matrix positioned similarly to Player 1's move with respect to the 3 by 3 matrix it is on. If such a matrix is full, the player can move whereever they want. The first victory in a 3 by 3 matrix will be marked on the final matrix and whoever wins the final matrix wins the game." );
     }
 
     //places an O on the board
@@ -135,6 +135,7 @@ public class TicTacToe{
 	_matrix[row-1][column-1] = "X";
     }
 
+    //places string x onto the final board
     public void placeF(String x, int row, int column){
 	_final[row-1][column-1] = x;
     }
@@ -144,6 +145,7 @@ public class TicTacToe{
 
 
 
+    
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~Checking 2 in a row of 3 by 3~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     
@@ -178,6 +180,7 @@ public class TicTacToe{
     }
 
     
+    //gives column of the first appearance of 2 O's in a column (outputs -1 otherwise)
     public int check2OColumn(){
 	int ctr = 0;
 	
@@ -204,6 +207,7 @@ public class TicTacToe{
     }
 
 
+    //gives row of the first appearance of 2 O's in the main diagonal (outputs -1 otherwise)
     public int check2OMain(){
 	int ctr = 0;
 	
@@ -231,7 +235,8 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+
+    //gives row of the first appearance of 2 O's in the back diagonal (outputs -1 otherwise)
     public int check2OBack(){
 	int ctr = 0;
 	
@@ -260,7 +265,8 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+
+    // Checks whether there exists two consecutive O's
     public boolean check2O(){
 	return ( (check2ORow() != -1) || (check2OColumn() != -1) ) || ( (check2OMain() != -1) || (check2OBack() != -1) );
     }
@@ -272,7 +278,7 @@ public class TicTacToe{
 
 
 
-
+    //gives row of the first appearance of 2 X's in a row (outputs -1 otherwise)
     public int check2XRow(){
 	int ctr = 0;
 	
@@ -300,7 +306,8 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+
+    //gives column of the first appearance of 2 X's in a column (outputs -1 otherwise)
     public int check2XColumn(){
 	int ctr = 0;
 	
@@ -328,6 +335,7 @@ public class TicTacToe{
     }
 
 
+     //gives row of the first appearance of 2 X's in the main diagonal (outputs -1 otherwise)
     public int check2XMain(){
 	int ctr = 0;
 	
@@ -354,8 +362,9 @@ public class TicTacToe{
 
 	return -1;
     }
-
     
+
+    //gives row of the first appearance of 2 X's in the back diagonal (outputs -1 otherwise)
     public int check2XBack(){
 	int ctr = 0;
 	
@@ -384,7 +393,8 @@ public class TicTacToe{
 
 	return -1;
     }
-    
+
+    //Checks to see if there exists 2 consecutive X's
     public boolean check2X(){
 	return  ((check2XRow() != -1) || (check2XColumn() != -1)) || ((check2XMain() != -1) || (check2XBack() != -1));
     }
@@ -396,7 +406,7 @@ public class TicTacToe{
 
     
 
-    
+    //Checks if there are 3 consecutive O's    
     public boolean check3O(){
 	//Checks row
 	for (int i = 0; i < size() ; i++){
@@ -424,6 +434,7 @@ public class TicTacToe{
 	
 
 
+    // Checks to see if there are 3 consecutive X's
     public boolean check3X(){
 	//Checks row
 	for (int i = 0; i < size() ; i++){
@@ -454,11 +465,7 @@ public class TicTacToe{
 
 
 
-
-
-
-
-   
+    // Checks the final matrix to see whether there are 3 consecutive O's
     public boolean check3Of(){
 	//Checks row
 	for (int i = 0; i < 3 ; i++){
@@ -487,6 +494,7 @@ public class TicTacToe{
 	
 
 
+    // Checks the final matrix to see whether there are 3 consecutive X's
     public boolean check3Xf(){
 	//Checks row
 	for (int i = 0; i < 3 ; i++){
@@ -521,7 +529,7 @@ public class TicTacToe{
 
 
 
-    //gives the row of the first appearance of 2 O's in a row (outputs -1 otherwise)
+    //gives row of the first appearance of 2 O's in a row (outputs -1 otherwise)
     public int check2ORow(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	
@@ -548,7 +556,7 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+    //gives column of the first appearance of 2 O's in a column(outputs -1 otherwise)    
     public int check2OColumn(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;	
 	
@@ -573,7 +581,7 @@ public class TicTacToe{
 	return -1;
     }
 
-
+    //gives row of the first appearance of 2 O's in the main diagonal (outputs -1 otherwise)
     public int check2OMain(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = rlow+2;
@@ -602,7 +610,7 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+   //gives row of the first appearance of 2 O's in the back diagonal (outputs -1 otherwise)
     public int check2OBack(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = rlow+2;
@@ -630,7 +638,7 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+    //checks if there are 2 O's in a row
     public boolean check2O(int rlow, int rhigh, int clow, int chigh){
 	return ( (check2ORow(rlow, rhigh, clow, chigh) != -1) || (check2OColumn(rlow, rhigh, clow, chigh) != -1) ) || ( (check2OMain(rlow, rhigh, clow, chigh) != -1) || (check2OBack(rlow, rhigh, clow, chigh) != -1) );
     }
@@ -638,8 +646,6 @@ public class TicTacToe{
 
 
     
-
-
 
     
     //gives the row of the first appearance of 2 X's in a row (outputs -1 otherwise)
@@ -668,7 +674,8 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+
+    //gives the column of the first appearance of 2 X's in a column (outputs -1 otherwise)
     public int check2XColumn(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;	
 	
@@ -693,7 +700,8 @@ public class TicTacToe{
 	return -1;
     }
 
-
+    
+    //gives the row of the first appearance of 2 X's in the main diagonal (outputs -1 otherwise)
     public int check2XMain(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = rlow+2;
@@ -723,7 +731,8 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+
+    //gives the row of the first appearance of 2 X's in the back diagonal (outputs -1 otherwise)
     public int check2XBack(int rlow, int rhigh, int clow, int chigh){
 	int ctr = 0;
 	int take = rlow+2;
@@ -751,7 +760,8 @@ public class TicTacToe{
 	return -1;
     }
 
-    
+
+    // Checks to see if there exists 2 consecutive X's
     public boolean check2X(int rlow, int rhigh, int clow, int chigh){
 	return ( (check2XRow(rlow, rhigh, clow, chigh) != -1) || (check2XColumn(rlow, rhigh, clow, chigh) != -1) ) || ( (check2XMain(rlow, rhigh, clow, chigh) != -1) || (check2XBack(rlow, rhigh, clow, chigh) != -1) );
     }
@@ -762,7 +772,7 @@ public class TicTacToe{
 
 
 
-    
+    //Checks to see if a 3 by 3 square bounded by the parameters has 3 consecutive O's
     public boolean check3O(int rlow, int rhigh, int clow, int chigh){
 	//bumps everything down 1;
 	rlow -= 1;
@@ -800,7 +810,7 @@ public class TicTacToe{
 	
 
 
-      
+    //Checks to see if a 3 by 3 square bounded by the parameters has 3 consecutive X's
     public boolean check3X(int rlow, int rhigh, int clow, int chigh){
 	rlow -= 1;
 	rhigh -= 1;
@@ -1042,18 +1052,6 @@ public class TicTacToe{
 	}
     }
 
-
-
-
-
-
-
-
-
-
-
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Play for 9 by 9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
 
 
 
