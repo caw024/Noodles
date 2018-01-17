@@ -10,10 +10,8 @@ public class MiniDesktop{
 	    System.out.println("tictactoe");
 	    Scanner a = new Scanner(System.in);
 	    String b = a.next();
-	    if (b.equals("texteditor")){
-	    
-	    }
-	    else if (b.equals("lettercrush")){
+	   
+	    if (b.equals("lettercrush")){
 		String[] c = new String[1];
 		System.out.println("Opening LetterCrush 1.0");
 		System.out.println("");
