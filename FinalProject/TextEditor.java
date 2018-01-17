@@ -14,7 +14,10 @@ public class TextEditor{
     }
     public static void printparagraph(){
 	for(int i = 0; i < paragraph.size(); i++){
+	if (paragraph.get(i).equals(" ")){
 	    System.out.println(paragraph.get(i));
+	}
+	else System.out.println(paragraph.get(i) + "-");
 	}
     }
     public static void next(){
