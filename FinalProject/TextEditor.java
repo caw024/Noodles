@@ -41,6 +41,7 @@ public class TextEditor{
     }
     public static void main(String[]Args){
 	Scanner scanb = new Scanner(System.in);
+	System.out.println("TextEditor 1.0");
 	System.out.println("What line length would you like to use?");
 	linelength = scanb.nextInt();
 	next();
