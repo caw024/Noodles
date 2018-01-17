@@ -1352,7 +1352,7 @@ public class TicTacToe{
 			}
 		
 		
-			if (get(rlow+a,clow+b) == "_"){
+			if (get(rlow+a,clow+b) == "_" && (rlow + a) <= rhigh && (clow + b) <= chigh){
 			    placeX(rlow+a,clow+b);
 
 			    rlow += a;
