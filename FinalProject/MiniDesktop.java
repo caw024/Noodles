@@ -24,6 +24,13 @@ public class MiniDesktop{
 		TicTacToe.main(c);
 	    
 	    }
+	    else if (b.equals("texteditor")){
+		String[] c = new String[1];
+		System.out.println("Opening TextEditor 1.0");
+		System.out.println("");
+		TextEditor.main(c);
+	    
+	    }
 	    else if (b.equals("exit")){
 		System.out.println("\nExiting...");
 		return;
