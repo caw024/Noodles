@@ -529,11 +529,9 @@ public class TicTacToe{
 	for (; rlow <= rhigh ; rlow++){
 	   
 	    for (;clow <= chigh; clow++){
-		if (get(rlow,chigh) == "X"){
-		    break;
-		}
-		
+	
 		if (get(rlow,clow) == "X"){
+		    ctr = 0;
 		    break;
 		}
 		if (get(rlow,clow) == "O"){
@@ -557,10 +555,9 @@ public class TicTacToe{
 	for (; clow <= chigh ; clow++){
 	   
 	    for (; rlow <= rhigh; rlow++){
-		if (get(rhigh,clow) == "X"){
-		    break;
-		}
+	
 		if (get(rlow,clow) == "X"){
+		    ctr = 0;
 		    break;
 		}
 		if (get(rlow,clow) == "O"){
@@ -678,6 +675,7 @@ public class TicTacToe{
 	for (; clow <= chigh ; clow++){
 	   
 	    for (; rlow <= rhigh; rlow++){
+
 		if (get(rlow,clow) == "O"){
 		    ctr = 0;
 		    break;
@@ -1211,6 +1209,8 @@ public class TicTacToe{
 		}
 
 		System.out.println("AI moves\n");
+		 System.out.println("Before\t" + rlow + "\t" + rhigh + "\t" + clow + "\t" + chigh);
+
 		    
 
 		
@@ -1260,15 +1260,28 @@ public class TicTacToe{
 		    }
 		    else if (check2XMain(rlow, rhigh, clow, chigh) != -1){
 			System.out.println("2XMain = " + check2XMain(rlow, rhigh, clow, chigh));			
-			placeX(check2XMain(rlow, rhigh, clow, chigh),check2XMain(rlow, rhigh, clow, chigh));
+		
+			sub = rlow;
 			rlow = check2XMain(rlow, rhigh, clow, chigh);
-			clow += ((check2XMain(rlow, rhigh, clow, chigh)+2) % 3);
+			clow += ((check2XMain(sub, rhigh, clow, chigh)+2) % 3);
+			if (getF(rlow/3,clow/3) == "_"){
+			    _final[rlow/3][clow/3] = "X";
+			}
+			placeX(check2XMain(rlow, rhigh, clow, chigh),check2XMain(rlow, rhigh, clow, chigh));
 		    }
+		    
 		    else {
 			System.out.println("2XBack = " + check2XBack(rlow, rhigh, clow, chigh));			
-			placeX(check2XBack(rlow, rhigh, clow, chigh), chigh - ((check2XBack(rlow, rhigh, clow, chigh) + 2) % 3 ));
+			sub = rlow;
 			rlow = check2XBack(rlow, rhigh, clow, chigh);
-			clow = chigh - ((check2XBack(rlow, rhigh, clow, chigh) + 2) % 3);
+			clow = chigh - ((check2XBack(sub, rhigh, clow, chigh) + 2) % 3);
+			if (getF(rlow/3,clow/3) == "_"){
+			    _final[rlow/3][clow/3] = "X";
+			}
+
+			placeX(check2XBack(rlow, rhigh, clow, chigh), chigh - ((check2XBack(rlow, rhigh, clow, chigh) + 2) % 3 ));
+
+
 		    }
    
 		}
@@ -1309,16 +1322,20 @@ public class TicTacToe{
 		    }
 		    else if (check2OMain(rlow, rhigh, clow, chigh) != -1){
 			System.out.println("2OMain = " + check2OMain(rlow, rhigh, clow, chigh));
-			placeX(check2OMain(rlow, rhigh, clow, chigh), ((check2OMain(rlow, rhigh, clow, chigh)+2) % 3) + clow);
+		
+			sub = rlow;
 			rlow = check2OMain(rlow, rhigh, clow, chigh);
-			clow += ((check2OMain(rlow, rhigh, clow, chigh)+2) % 3);
+			clow += ((check2OMain(sub, rhigh, clow, chigh)+2) % 3);
+
+			placeX(check2OMain(rlow, rhigh, clow, chigh), ((check2OMain(rlow, rhigh, clow, chigh)+2) % 3) + clow);
 			
 		    }
 		    else {
 			System.out.println("2OBack = " + check2OBack(rlow, rhigh, clow, chigh));
-			placeX(check2OBack(rlow, rhigh, clow, chigh), chigh - ((check2OBack(rlow, rhigh, clow, chigh) + 2) % 3 ));
+			sub = rlow;
 			rlow = check2OBack(rlow, rhigh, clow, chigh);
-			clow = chigh - ((check2OBack(rlow, rhigh, clow, chigh) + 2) % 3);
+			clow = chigh - ((check2OBack(sub, rhigh, clow, chigh) + 2) % 3);
+			placeX(check2OBack(rlow, rhigh, clow, chigh), chigh - ((check2OBack(rlow, rhigh, clow, chigh) + 2) % 3 ));
 		    }
 		    
 		}
@@ -1343,13 +1360,10 @@ public class TicTacToe{
 			    a = (int) (9 * Math.random());
 			    b = (int) (9 * Math.random());
 			}
-
-		
 		
 		
 			if (get(rlow+a,clow+b) == "_"){
 			    placeX(rlow+a,clow+b);
-			    System.out.println(rlow + "\t" + rhigh + "\t" + clow + "\t" + chigh);
 
 			    rlow += a;
 			    rhigh += a;
