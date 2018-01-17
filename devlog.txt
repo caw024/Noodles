@@ -124,11 +124,11 @@ Calvin :: Begin Ultimate Tic Tac Toe AI; Robustified MiniDesktop
 
 2018 - 01 - 16
 --------------------------------------------------------------
-Samuel :: Begun Text Editor
+Samuel :: Revised flow chart and UML Diagram
 Calvin :: Worked on Ultimate Tic Tac Toe AI
 
 2018 - 01 - 17
 --------------------------------------------------------------
-Samuel :: Finished Text Editor
-Calvin :: Finished a mostly working Ultimate Tic Tac Toe AI
+Samuel :: Revised flow chart and UML Diagram
+Calvin :: Finished a mostly working Ultimate Tic Tac Toe AI, Revised flow chart and UML Diagram
 ==============================================================
